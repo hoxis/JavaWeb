@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>输入表格要求</title>
+
+<script type="text/javascript">
+	function validate(f){
+		if(!(/^\d+$/.test(f.rows.value))){
+			alert("行数必须是数字！");
+			f.rows.focus();
+			return false;
+		}
+		
+		if(!(/^\d+$/.test(f.cols.value))){
+			alert("列数必须是数字！");
+			f.cols.focus();
+			return false;
+		}
+		
+		return true;
+	
+	}
+</script>
+
+</head>
+<body>
+	<form action="printTable.jsp" method="get" onsubmit="validate(this)">
+		<center>
+			<table border="1">
+				<tr>
+					<td colspan="2" align="center">打印表格</td>
+				</tr>
+				<tr>
+					<td>行数：</td>
+					<td><input type="text" name="rows">
+					</td>
+				</tr>
+				<tr>
+					<td>列数：</td>
+					<td><input type="text" name="cols">
+					</td>
+				</tr>
+				<tr>
+					<td><input type="reset" value="重置">
+					</td>
+					<td><input type="submit" value="提交">
+					</td>
+				</tr>
+			</table>
+		</center>
+	</form>
+
+</body>
+</html>

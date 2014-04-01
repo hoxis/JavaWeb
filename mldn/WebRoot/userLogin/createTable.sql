@@ -1,0 +1,16 @@
+-- 选择数据库
+USE mldn;
+
+-- 删除表
+DROP TABLE IF EXISTS USER;
+
+-- 创建表
+CREATE TABLE USER(
+	userid VARCHAR(6) PRIMARY KEY,
+	NAME VARCHAR(20) NOT NULL,
+	PASSWORD VARCHAR(30) NOT NULL
+);
+
+-- 插入测试数据
+INSERT INTO USER VALUES ('000000','管理员','admin');
+INSERT INTO USER VALUES ('000001','来访者','guest');
