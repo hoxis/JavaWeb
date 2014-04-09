@@ -20,4 +20,28 @@
   	<exception-type>java.lang.NullPointerException</exception-type>
   	<location>/testJSP/error.jsp</location>
   </error-page>
+  
+  <security-constraint>	<!-- 不通过编程而限制资源的访问 -->
+  	<web-resource-collection>	<!-- 定义限制访问的资源 -->
+  		<web-resource-name>RegisteredUsers</web-resource-name>	<!-- 限制访问的名称 -->
+  		<url-pattern>/S06/security.jsp</url-pattern>	<!-- 限制访问的路径 -->
+  	</web-resource-collection>
+  	<auth-constraint>	<!-- 定义访问此限制资源的角色 -->
+  		<role-name>user</role-name>
+  		<role-name>admin</role-name>
+  	</auth-constraint>
+  </security-constraint>
+  
+  <login-config> <!-- 指定所使用的验证方法 -->
+  	<auth-method>BASIC</auth-method>	<!-- 使用Basic验证，通过弹出登录窗口，提示用户输入用户名、密码 -->
+  	<realm-name>限制Registered Users</realm-name>	<!-- 验证中使用的领域名称 -->
+  </login-config>
+  
+  <security-role>	<!-- 指定用于安全约束中安全角色的声明 -->
+  	<role-name>user</role-name>
+  </security-role>
+  
+  <security-role>
+  	<role-name>admin</role-name>
+  </security-role>
 </web-app>
