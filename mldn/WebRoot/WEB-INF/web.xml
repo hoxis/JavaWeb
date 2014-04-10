@@ -44,4 +44,14 @@
   <security-role>
   	<role-name>admin</role-name>
   </security-role>
+  
+  <servlet>
+  	<servlet-name>hello</servlet-name>
+  	<jsp-file>/WEB-INF/hello.jsp</jsp-file>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>hello</servlet-name>
+  	<url-pattern>/hello</url-pattern>
+  </servlet-mapping>
 </web-app>
