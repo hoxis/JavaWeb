@@ -1,0 +1,17 @@
+﻿#eclipse配置文件
+
+.settings
+*.zip
+
+/.JETEmitters
+/.metadata
+
+
+#暂时不要提交的项目
+/BBS
+/Ericsson
+/JDBC
+/knowledgebase
+/网页
+/Servers
+/Shopping
