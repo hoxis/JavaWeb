@@ -54,4 +54,88 @@
   	<servlet-name>hello</servlet-name>
   	<url-pattern>/hello</url-pattern>
   </servlet-mapping>
+  
+  <servlet><!-- 定义serv -->
+  	<servlet-name>helloServlet</servlet-name><!-- 与 servlet-mapping相对应-->
+  	<servlet-class>com.liuhao.servletdemo.HelloServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>helloServlet</servlet-name>
+  	<url-pattern>/helloServlet</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>input</servlet-name>
+  	<servlet-class>com.liuhao.servletdemo.InputServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>input</servlet-name>
+  	<url-pattern>/S09_servlet/InputServlet</url-pattern>
+  </servlet-mapping>
+  
+  
+  <servlet>
+  	<servlet-name>lifeCycle</servlet-name><!-- 与 servlet-mapping相对应-->
+  	<servlet-class>com.liuhao.servletdemo.LifeCycleServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>lifeCycle</servlet-name>
+  	<url-pattern>/lifeCycle</url-pattern>
+  </servlet-mapping>
+  
+  
+   <servlet>
+  	<servlet-name>initParam</servlet-name><!-- 与 servlet-mapping相对应-->
+  	<servlet-class>com.liuhao.servletdemo.InitParamServlet</servlet-class>
+  	<init-param>
+  		<param-name>ref</param-name>
+  		<param-value>哈哈哈哈， 你妹</param-value>
+  	</init-param>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>initParam</servlet-name>
+  	<url-pattern>/initParam</url-pattern>
+  </servlet-mapping>
+  
+  
+  <servlet>
+  	<servlet-name>session</servlet-name>
+  	<servlet-class>com.liuhao.servletdemo.HttpSessionDemoServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>session</servlet-name>
+  	<url-pattern>/session</url-pattern>
+  </servlet-mapping>
+  
+  
+  <servlet>
+  	<servlet-name>application</servlet-name>
+  	<servlet-class>com.liuhao.servletdemo.ServletContextDemoServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>application</servlet-name>
+  	<url-pattern>/application</url-pattern>
+  </servlet-mapping>
+  
+  
+  <servlet>
+  	<servlet-name>clientRedirect</servlet-name>
+  	<servlet-class>com.liuhao.servletdemo.ClientRedirectDemo</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>clientRedirect</servlet-name>
+  	<url-pattern>/S09_servlet/clientRedirect</url-pattern>
+  </servlet-mapping>
+  
+  
+  <servlet>
+  	<servlet-name>serverRedirect</servlet-name>
+  	<servlet-class>com.liuhao.servletdemo.ServerRedirectDemo</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>serverRedirect</servlet-name>
+  	<url-pattern>/S09_servlet/serverRedirect</url-pattern>
+  </servlet-mapping>
+  
 </web-app>
