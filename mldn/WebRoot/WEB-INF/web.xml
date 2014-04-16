@@ -138,4 +138,14 @@
   	<url-pattern>/S09_servlet/serverRedirect</url-pattern>
   </servlet-mapping>
   
+  
+   <servlet>
+  	<servlet-name>login</servlet-name>
+  	<servlet-class>com.liuhao.servletdemo.LoginServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>login</servlet-name>
+  	<url-pattern>/S09_servlet/LoginServlet</url-pattern>
+  </servlet-mapping>
+  
 </web-app>
