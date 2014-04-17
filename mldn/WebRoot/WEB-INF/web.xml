@@ -163,7 +163,7 @@
   	<filter-class>com.liuhao.servletdemo.EncodingFilter</filter-class>
   	<init-param>
   		<param-name>charset</param-name>
-  		<param-value>GBK</param-value>
+  		<param-value>utf-8</param-value>
   	</init-param>
   </filter>
   <filter-mapping>
@@ -171,34 +171,44 @@
   	<url-pattern>/*</url-pattern>
   </filter-mapping>
  
-  <!-- 上下文状态监听器 -->
+  <!-- 上下文状态监听器 
   <listener>
   	<listener-class>com.liuhao.listenerdemo.ServletListenerDemo</listener-class>
   </listener> 
-  
-  <!-- 上下文属性监听器：增加、删除、替换 -->
+  -->
+  <!-- 上下文属性监听器：增加、删除、替换 
   <listener>
   	<listener-class>com.liuhao.listenerdemo.ServletContextAttributeListenerDemo</listener-class>
   </listener> 
-  
-  <!-- session状态监听器 -->
+  -->
+  <!-- session状态监听器
   <listener>
   	<listener-class>com.liuhao.listenerdemo.HttpSessionListenerDemo</listener-class>
   </listener>
-  
-  <!-- session属性状态监听器 -->
+   -->
+  <!-- session属性状态监听器-->
   <listener>
   	<listener-class>com.liuhao.listenerdemo.HttpSessionAttributeListenerDemo</listener-class>
   </listener>
-  
-  <!-- request状态监听 -->
+   
+  <!-- request状态监听 
   <listener>
   	<listener-class>com.liuhao.listenerdemo.ServletRequestListenerDemo</listener-class>
   </listener>
-  
-  <!-- request属性状态监听 -->
+  -->
+  <!-- request属性状态监听 
   <listener>
   	<listener-class>com.liuhao.listenerdemo.ServletRequestAttributeListenerDemo</listener-class>
   </listener>
+  -->
+  <!-- 监听在线用户数 -->
+  <listener>
+  	<listener-class>com.liuhao.listenerdemo.OnlineUserList</listener-class>
+  </listener>
+  
+  <!-- 设置session时限 -->
+  <session-config>
+  	<session-timeout>3</session-timeout>
+  </session-config>
   
 </web-app>
