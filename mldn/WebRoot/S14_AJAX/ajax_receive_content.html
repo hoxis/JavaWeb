@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+	<script language="JavaScript">
+		var xmlHttp;//AJAX核心对象名称
+		
+		//创建XMLHttpRequest核心对象
+		function createXMLHttp(){
+			if(window.XMLHttpRequest){
+				xmlHttp = new XMLHttpRequest();//表示使用的是FireFox内核的浏览器
+			} else {
+				xmlHttp = new ActiveXObject("Microsoft.XMLHttp");//IE内核的浏览器
+			}
+		}
+		
+		function showMsg(){
+			createXMLHttp();//建立xmlHttp核心对象
+			xmlHttp.open("POST", "content.html");//设置一个请求
+			//设置请求完成后处理的回调函数
+			xmlHttp.onreadystatechange = showMsgCallback;
+			xmlHttp.send(null);
+		}
+		
+		//定义回调函数
+		function showMsgCallback(){
+			if(xmlHttp.readyState == 4){//数据返回完毕
+				if(xmlHttp.status == 200){//http操作正常
+					var text = xmlHttp.responseText;//接收返回的内容
+					//设置msg标签元素中要显示的内容为AJAX接收的返回值内容
+					document.getElementById("msg").innerHTML = text;
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+	<input type="button" onclick="showMsg()" value="调用Ajax显示">
+	<span id="msg"></span>
+
+</body>
+</html>

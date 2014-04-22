@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+	<script type="text/javascript">
+		var xmlHttp;
+		var flag;
+		
+		//创建XMLHttpRequest核心对象
+		function createXMLHttp(){
+			if(window.XMLHttpRequest){
+				xmlHttp = new XMLHttpRequest();//表示使用的是FireFox内核的浏览器
+			} else {
+				xmlHttp = new ActiveXObject("Microsoft.XMLHttp");//IE内核的浏览器
+			}
+		}
+		
+		function checkUserid(userid){
+			createXMLHttp();
+			//设置一个请求，通过地址重写的方式将userid传递到JSP页面
+			xmlHttp.open("POST","CheckServlet?userid="+userid);
+			//设置请求完成后处理的回调函数
+			xmlHttp.onreadystatechange = checkUseridCallback;
+			xmlHttp.send(null);
+			document.getElementById("msg").innerHTML = "正在验证...";
+		}
+		
+		function checkUseridCallback(){
+			if(xmlHttp.readyState == 4){//数据返回完毕
+				if(xmlHttp.status == 200){//http操作正常
+					var text = xmlHttp.responseText;//获取返回内容
+					if(text == "true"){
+						flag = false;
+						document.getElementById("msg").innerHTML = "用户id重复，无法使用";
+					}
+					else {
+						flag = true;
+						document.getElementById("msg").innerHTML = "此id可以注册";
+					}
+				}
+			}
+		}
+		
+		function checkForm(){
+			return flag;
+		}
+	</script>
+</head>
+<body>
+	<form action="regist.jsp" method="post" onsubmit="return checkForm()">
+		用户ID：<input type="text" name="userid" onblur="checkUserid(this.value)">
+		<span id="msg"></span><br>
+		姓名：<input type="text" name="name"><br>
+		密码：<input type="password" name="password"><br>
+		<input type="submit" value="注册">
+		<input type="reset" value="重置">
+	</form>
+</body>
+</html>

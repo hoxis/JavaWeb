@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	var xmlHttp;
+
+	//创建XMLHttpRequest核心对象
+	function createXMLHttp() {
+		if (window.XMLHttpRequest) {
+			xmlHttp = new XMLHttpRequest();//表示使用的是FireFox内核的浏览器
+		} else {
+			xmlHttp = new ActiveXObject("Microsoft.XMLHttp");//IE内核的浏览器
+		}
+	}
+
+	function getCity() {
+		createXMLHttp(); // 建立xmlHttp核心对象
+		xmlHttp.open("POST", "allarea.xml"); // 设置一个请求
+		xmlHttp.onreadystatechange = getCityCallback;
+		xmlHttp.send(null); // 发送请求，不传递任何参数
+	}
+	function getCityCallback() { // 定义回调函数
+		if (xmlHttp.readyState == 4) { // 数据返回完毕
+			if (xmlHttp.status == 200) { // HTTP操作正常
+				// 取得allarea节点下的全部节点
+				var allarea = xmlHttp.responseXML
+						.getElementsByTagName("allarea")[0].childNodes;
+				var select = document.getElementById("city");
+				select.length = 1; // 显示一个内容
+				select.options[0].selected = true; // 设置第一个为选中状态
+				// 循环 all 下的子节点
+				for ( var i = 0; i < allarea.length; i++) {
+					var area = allarea[i]; // 取得每一个<area>
+					var option = document.createElement("option");
+					var id = area.getElementsByTagName("id")[0].firstChild.nodeValue;
+					var title = area.getElementsByTagName("title")[0].firstChild.nodeValue;
+					option.setAttribute("value", id);
+					option.appendChild(document.createTextNode(title));
+					select.appendChild(option);
+				}
+			}
+		}
+	}
+</script>
+</head>
+<body onload="getCity()">
+	<form action="" method="post">
+		请选择喜欢的城市： <select name="city">
+			<option value="0">-请选择城市-</option>
+		</select>
+	</form>
+</body>
+</html>

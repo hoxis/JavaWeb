@@ -153,6 +153,11 @@
     <servlet-name>ELListServlet</servlet-name>
     <servlet-class>com.liuhao.servletdemo.ELListServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>CheckServlet</servlet-name>
+    <servlet-class>com.liuhao.servletdemo.CheckServlet</servlet-class>
+  </servlet>
+
 
 
   <servlet-mapping>
@@ -167,6 +172,10 @@
   <servlet-mapping>
     <servlet-name>ELListServlet</servlet-name>
     <url-pattern>/S10/ELListServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>CheckServlet</servlet-name>
+    <url-pattern>/S14_AJAX/CheckServlet</url-pattern>
   </servlet-mapping>
   
  
@@ -222,14 +231,14 @@
   	<listener-class>com.liuhao.listenerdemo.ServletRequestAttributeListenerDemo</listener-class>
   </listener>
   -->
-  <!-- 监听在线用户数 -->
+  <!-- 监听在线用户数
   <listener>
   	<listener-class>com.liuhao.listenerdemo.OnlineUserList</listener-class>
   </listener>
-  
-  <!-- 设置session时限 -->
+   -->
+  <!-- 设置session时限
   <session-config>
   	<session-timeout>3</session-timeout>
   </session-config>
-  
+   -->
 </web-app>
