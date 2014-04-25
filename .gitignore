@@ -1,6 +1,8 @@
 ﻿#eclipse配置文件
 
+.gitignore
 .settings
+
 *.zip
 
 /.JETEmitters
@@ -15,3 +17,8 @@
 /网页
 /Servers
 /Shopping
+/hellofw
+/hellojava
+/hellojavaweb
+/hellostruts2
+/hibernate_spring
