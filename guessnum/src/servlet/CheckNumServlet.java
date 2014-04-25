@@ -1,6 +1,8 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.Random;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -15,7 +17,12 @@ public class CheckNumServlet extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		num = (Integer) request.getSession().getAttribute("num");
+		if((Integer) request.getSession().getAttribute("num") != null){
+			num = (Integer) request.getSession().getAttribute("num");
+		}else{
+			num = new Random().nextInt(100) + 1;
+			request.getSession().setAttribute("num", num);
+		}
 
 		// 存放用户输入的数字
 		double inputnum = Double.parseDouble(request.getParameter("inputnum"));
