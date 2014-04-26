@@ -16,10 +16,8 @@
 				input.inputnum.select();
 				return false;
 			}
-			
 			return true;
 		}
-		
 	</script>
 </head>
 <body>
@@ -31,9 +29,9 @@
 		<font color="red">${sessionScope.msg }</font><br>
 		
 		<input type="text" name="inputnum">
-		
+		${sessionScope.inputnum }
 		<input type="submit" value="提交">
-		你已猜了${sessionScope.sum }次。
+		你已猜了<%=session.getAttribute("sum") == null ? 0 : session.getAttribute("sum") %>次。
 	</form>
 	<br>
 	<form action="NewGameServlet" method="post">
