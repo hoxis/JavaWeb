@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 
 public class CheckNumServlet extends HttpServlet {
 
-	private int sumRound = 1;
 	private int num; // 存放后台产生的随机数
 	private int sum;// 存放用户猜的次数
 
@@ -24,9 +23,11 @@ public class CheckNumServlet extends HttpServlet {
 			request.getSession().setAttribute("num", num);
 		}
 
-		// 存放用户输入的数字
+		// 存放用户输入的数字,防止用户输入小数
 		double inputnum = Double.parseDouble(request.getParameter("inputnum"));
 
+		request.getSession().setAttribute("inputnum", (int)inputnum);
+		
 		if (request.getSession().getAttribute("sum") != null) {
 			// 将用户的猜数字次数加1，并重新写到session中
 			sum = (Integer) request.getSession().getAttribute("sum");
@@ -44,15 +45,12 @@ public class CheckNumServlet extends HttpServlet {
 		} else if (inputnum < num) {
 			msg = "偏小了";
 		} else {
-			request.getServletContext().setAttribute("sumRound", ++sumRound);
 			response.sendRedirect("success.jsp");
 			return;
 		}
 
 		request.getSession().setAttribute("msg", msg);
-
 		response.sendRedirect("guess.jsp");
-
 	}
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response)

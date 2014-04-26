@@ -7,6 +7,7 @@
 <title>成功啦</title>
 </head>
 <body>
+	<h3>本局数字为：${sessionScope.num }</h3>
 	<h2>恭喜你，猜数成功！</h2>
 	共猜了${sessionScope.sum }次。<br><br>
 	<form action="NewGameServlet" method="post">

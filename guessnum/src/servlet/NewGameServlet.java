@@ -24,15 +24,20 @@ public class NewGameServlet extends HttpServlet {
 		request.getSession().setAttribute("num", num);
 
 		// 总局数加1
-		int sumRound = 0;
 		if (request.getServletContext().getAttribute("sumRound") != null) {
-			sumRound = (Integer) request.getServletContext().getAttribute(
+			int sumRound = (Integer) request.getServletContext().getAttribute(
 					"sumRound");
+			request.getServletContext().setAttribute("sumRound", ++sumRound);
+		} else {
+			int sumRound = 1;
+			request.getServletContext().setAttribute("sumRound", ++sumRound);
 		}
-		request.getServletContext().setAttribute("sumRound", ++sumRound);
 
 		// 猜的次数清零
 		request.getSession().setAttribute("sum", 0);
+
+		// session中保存的inputnum清零
+		request.getSession().setAttribute("inputnum", null);
 
 		// 提示信息清空
 		request.getSession().setAttribute("msg", "");
