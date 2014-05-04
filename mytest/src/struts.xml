@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+    
+<struts>
+	<package name="user" namespace="/" extends="struts-default">
+	
+		<action name="saveUser" class="saveUserAction">
+			<result name="input">/save.jsp</result>
+			<result name="success" type="redirect">listUser.action</result>
+		</action>
+		
+		<action name="listUser" class="listUserAction">
+			<result>/userlist.jsp</result>
+		</action>
+		
+		<action name="deleteUser" class="removeUserAction">
+			<result name="success" type="redirect">listUser.action</result>
+		</action>
+		
+		<action name="updatePUser" class="updatePUserAction">
+			<result name="success">/update.jsp</result>
+		</action>
+		
+		<action name="updateUser" class="updateUserAction">
+			<result name="input">/update.jsp</result>
+			<result name="success" type="redirect">/listUser.action</result>
+		</action>
+		
+	</package>
+</struts>

@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.liuhao.bean.User" table="users">
+		<id name="id" type="java.lang.Integer" column="id">
+			<generator class="increment"></generator>
+		</id>
+		
+		<property name="firstname" type="string" column="firstname" length="50"></property>
+		<property name="lastname" type="string" column="lastname" length="50"></property>
+		
+		<property name="age" type="java.lang.Integer" column="age"></property>
+	</class>
+</hibernate-mapping>
