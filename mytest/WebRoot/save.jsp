@@ -30,7 +30,6 @@
 		<s:submit value="提交"></s:submit>
 	</s:form>
 	
-	<s:debug></s:debug>
 
 </body>
 </html>
