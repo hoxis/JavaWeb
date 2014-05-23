@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	
+	<!-- 注入数据源 -->
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+		<property name="url" value="jdbc:mysql://localhost:3306/bookmanage"/>
+		<property name="username" value="root"/>
+		<property name="password" value="root"/>
+		<property name="maxActive" value="100"/>
+		<property name="maxIdle" value="30"/>
+		<property name="maxWait" value="500"/>
+		<property name="defaultAutoCommit" value="true"/>
+	</bean>
+	
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"/>
+		<!-- hibernate相关属性 -->
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+				<prop key="hibernate.show_sql">true</prop>
+			</props>
+		</property>
+		
+		<!-- 装载映射文件 -->
+		<property name="mappingResources">
+			<list>
+				<value>com\liuhao\bean\User.hbm.xml</value>
+				<value>com\liuhao\bean\Book.hbm.xml</value>
+			</list>
+		</property>
+	</bean>
+	
+	<!-- sessionFactory注入到DAO中 -->
+	<bean id="userDao" class="com.liuhao.dao.impl.UserDAOImpl" scope="singleton">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	
+	<!-- userDao注入到 userService-->
+	<bean id="userService" class="com.liuhao.service.impl.UserServiceImpl">
+		<property name="userDao" ref="userDao"/>
+	</bean>
+	
+	<!-- 用户相关逻辑 -->
+	<bean id="userLoginAction" class="com.liuhao.action.user.UserLoginAction" scope="prototype">
+		<property name="userService" ref="userService"/>
+	</bean>
+	
+	<bean id="userRegisterAction" class="com.liuhao.action.user.UserRegisterAction" scope="prototype">
+		<property name="userService" ref="userService"/>
+	</bean>
+	
+	<bean id="updatePUserAction" class="com.liuhao.action.user.UpdatePUserAction" scope="prototype">
+		<property name="userService" ref="userService"/>
+	</bean>
+	
+	<bean id="updateUserAction" class="com.liuhao.action.user.UpdateUserAction" scope="prototype">
+		<property name="userService" ref="userService"/>
+	</bean>
+	
+	
+	<!-- 书籍相关逻辑 -->
+	<bean id="bookDao" class="com.liuhao.dao.impl.BookDAOImpl" scope="singleton">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	
+	<bean id="paginationDao" class="com.liuhao.dao.impl.PaginationDAOImpl" scope="singleton">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	
+	<bean id="bookService" class="com.liuhao.service.impl.BookServiceImpl" scope="prototype">
+		<property name="bookDao" ref="bookDao"/>
+		<property name="paginationDao" ref="paginationDao"/>
+	</bean>
+	
+	<bean id="addBookAction" class="com.liuhao.action.book.AddBookAction" scope="prototype">
+		<property name="bookService" ref="bookService"/>
+	</bean>
+	
+	<bean id="listBookAction" class="com.liuhao.action.book.ListBookAction" scope="prototype">
+		<property name="bookService" ref="bookService"/>
+	</bean>
+	
+	
+	<bean id="updatePBookAction" class="com.liuhao.action.book.UpdatePBookAction" scope="prototype">
+		<property name="bookService" ref="bookService"/>
+	</bean>
+	
+	<bean id="updateBookAction" class="com.liuhao.action.book.UpdateBookAction">
+		<property name="bookService" ref="bookService"/>
+	</bean>
+	
+	<bean id="deleteBookAction" class="com.liuhao.action.book.DeleteBookAction">
+		<property name="bookService" ref="bookService"/>
+	</bean>
+	
+	<bean id="listBookForPageAction" class="com.liuhao.action.book.ListBookForPageAction">
+		<property name="bookService" ref="bookService"/>
+	</bean>
+
+</beans>

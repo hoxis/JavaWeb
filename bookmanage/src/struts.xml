@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+    
+<struts>
+	<package name="bookmanage" extends="struts-default" namespace="/">
+	
+		<interceptors>
+			<!-- 用户登录状态拦截器，若为登录则不能直接访问action，直接跳转到登录页面 -->
+			<interceptor name="antuority" class="com.liuhao.interceptor.LoginInterceptor"/>
+			<interceptor-stack name="mydefault">
+				<interceptor-ref name="defaultStack"/>
+				<interceptor-ref name="antuority"/>
+			</interceptor-stack>
+		</interceptors>
+		
+		<default-interceptor-ref name="mydefault"></default-interceptor-ref>
+		
+		<global-results>
+			<result name="login" type="redirect">/index.jsp</result>
+		</global-results>
+		
+		<action name="userLogin" class="userLoginAction">
+			<result name="success" type="redirect">/welcome.jsp</result>
+			<result name="input">/index.jsp</result>
+			<result name="error">/index.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+		</action>
+		
+		<action name="userRegister" class="userRegisterAction">
+			<result name="success" type="redirect">welcome.jsp</result>
+			<result name="input">/register.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+		</action>
+		
+		<action name="updatePUser" class="updatePUserAction">
+			<result name="success">/updateuser.jsp</result>
+		</action>
+		
+		<action name="updateUser" class="updateUserAction">
+			<result name="success">/welcome.jsp</result>
+		</action>
+		
+		<action name="addBook" class="addBookAction">
+			<result name="success" type="redirect">listBook.action</result>
+		</action>
+		<action name="listBook" class="listBookAction">
+			<result name="success">/listbook.jsp</result>
+		</action>
+		
+		<action name="listBookForPage" class="listBookForPageAction">
+			<result name="success">/listbook4page.jsp</result>
+		</action>
+		
+		<action name="updatePBook" class="updatePBookAction">
+			<result name="success">/updatebook.jsp</result>
+		</action>
+		
+		<action name="updateBook" class="updateBookAction">
+			<result name="success" type="redirect">listBook.action</result>
+		</action>
+		
+		<action name="deleteBook" class="deleteBookAction">
+			<result name="success" type="redirect">listBook.action</result>
+		</action>
+		
+	</package>
+</struts>
+    
