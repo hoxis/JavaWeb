@@ -29,6 +29,12 @@ public class UpdatePUserAction extends ActionSupport {
 	@Override
 	public String execute() throws Exception {
 		user = userService.findUserById(user.getUserid());
-		return SUCCESS;
+		if(user != null){
+			return SUCCESS;
+		}
+		else{
+			this.addFieldError("userNotExsit", "要修改的用户不存在！！！");
+			return ERROR;
+		}
 	}
 }

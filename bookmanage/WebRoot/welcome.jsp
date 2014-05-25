@@ -18,6 +18,7 @@
 	 %>
 	<center>
 		<h2>欢迎你，<s:property value="#session.user.username"/> </h2>	
+		<s:fielderror cssStyle="color:red"></s:fielderror>
 	</center>
 		<table align="center">
 			<tr><td>你可以：</td></tr>
@@ -28,11 +29,11 @@
 				<td><s:a href="addbook.jsp">添加图书</s:a></td>
 			</tr>
 			<tr>
-				<td><s:a href="listBook.action">查看图书列表</s:a></td>
+				<td><s:a href="listBook.action">查看全部图书</s:a></td>
 			</tr>
 			
 			<tr>
-				<td><s:a href="listBookForPage.action?page=1">分页查看图书列表</s:a></td>
+				<td><s:a href="listBookForPage.action?page=1">分页查看图书</s:a></td>
 			</tr>
 			
 			

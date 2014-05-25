@@ -81,6 +81,7 @@
 	
 	<table align="center">
 		<tr>
+			<td><s:a href="listBook.action">查看全部</s:a></td>
 			<td colspan="7"><s:a href="addbook.jsp">添加图书</s:a></td>
 			<td colspan="7" align="right">
 			<s:a href="welcome.jsp">返回</s:a>

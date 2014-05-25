@@ -23,6 +23,12 @@ public class UpdatePBookAction extends ActionSupport {
 	@Override
 	public String execute() throws Exception {
 		book = bookService.findBookById(book.getBookid());
-		return super.execute();
+		if(book != null){
+			return SUCCESS;
+		}
+		else{
+			this.addFieldError("bookNotExsit", "要修改的书籍不存在！！！");
+			return ERROR;
+		}
 	}
 }

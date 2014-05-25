@@ -53,6 +53,7 @@
 	
 	<table align="center">
 		<tr>
+			<td><s:a href="listBookForPage.action?page=1">分页查看</s:a></td>
 			<td colspan="7"><s:a href="addbook.jsp">添加图书</s:a></td>
 			<td colspan="7" align="right">
 			<s:a href="welcome.jsp">返回</s:a>

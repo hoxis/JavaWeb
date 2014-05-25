@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE struts PUBLIC
-    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
-    "http://struts.apache.org/dtds/struts-2.0.dtd">
+    "-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN"
+    "http://struts.apache.org/dtds/struts-2.1.7.dtd">
     
 <struts>
 	<package name="bookmanage" extends="struts-default" namespace="/">
@@ -36,11 +36,14 @@
 		
 		<action name="updatePUser" class="updatePUserAction">
 			<result name="success">/updateuser.jsp</result>
+			<result name="error">/welcome.jsp</result>
 		</action>
 		
 		<action name="updateUser" class="updateUserAction">
 			<result name="success">/welcome.jsp</result>
 		</action>
+		
+		<!-- 书籍相关操作 -->
 		
 		<action name="addBook" class="addBookAction">
 			<result name="success" type="redirect">listBook.action</result>
@@ -55,6 +58,7 @@
 		
 		<action name="updatePBook" class="updatePBookAction">
 			<result name="success">/updatebook.jsp</result>
+			<result name="error">/welcome.jsp</result>
 		</action>
 		
 		<action name="updateBook" class="updateBookAction">
