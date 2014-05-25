@@ -23,17 +23,17 @@
 		<table align="center">
 			<tr><td>你可以：</td></tr>
 			<tr>
-				<td><s:a href="updatePUser.action?user.userid=%{#session.user.userid}">修改个人信息</s:a></td>
+				<td><s:a href="pupdate_user.action?user.userid=%{#session.user.userid}">修改个人信息</s:a></td>
 			</tr>
 			<tr>
 				<td><s:a href="addbook.jsp">添加图书</s:a></td>
 			</tr>
 			<tr>
-				<td><s:a href="listBook.action">查看全部图书</s:a></td>
+				<td><s:a href="list_book.action">查看全部图书</s:a></td>
 			</tr>
 			
 			<tr>
-				<td><s:a href="listBookForPage.action?page=1">分页查看图书</s:a></td>
+				<td><s:a href="list4page_book.action?page=1">分页查看图书</s:a></td>
 			</tr>
 			
 			

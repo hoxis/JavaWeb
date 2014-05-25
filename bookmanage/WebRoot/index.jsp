@@ -21,7 +21,7 @@
 		<font color="red"><s:property value="#session.HasNotLoginMessage"/></font>
 		<br>
 		<s:fielderror cssStyle="color:red" fieldName="NameOrPasswordError"></s:fielderror>
-		<s:form action="userLogin" method="post">
+		<s:form action="user_login" method="post">
 			<table border="1">
 				<s:textfield name="user.username" label="%{getText('username')}"></s:textfield>
 				<s:password name="user.password" label="%{getText('password')}"> </s:password>

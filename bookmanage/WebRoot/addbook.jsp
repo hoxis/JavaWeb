@@ -17,7 +17,7 @@
 	 %>
 	<center>
 		<h1><font color="red">添加图书</font></h1>
-		<s:form action="addBook">
+		<s:form action="add_book">
 			<table border="1">
 				<s:textfield name="book.bookname" label="%{getText('bookname')}"/>
 				<s:textfield name="book.author" label="%{getText('author')}"/>

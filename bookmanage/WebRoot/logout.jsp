@@ -14,7 +14,7 @@
 		}
 	 %>
 	<%
-		response.setHeader("refresh", "3;URL=index.jsp");//定时跳转
+		response.setHeader("refresh", "1;URL=index.jsp");//定时跳转
 		session.invalidate();//注销
 	 %>
 	 

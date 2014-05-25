@@ -4,6 +4,21 @@
     "http://struts.apache.org/dtds/struts-2.1.7.dtd">
     
 <struts>
+
+	<package name="user" extends="struts-default" namespace="/">
+	
+		<global-results>
+			<result name="login" type="redirect">/index.jsp</result>
+			<result name="error">/index.jsp</result>
+		</global-results>
+		
+		<action name="user_*" class="userAction" method="{1}">
+			<result name="loginsuccess" type="redirect">/welcome.jsp</result>
+			<result name="input">/index.jsp</result>
+			<result name="registersuccess" type="redirect">welcome.jsp</result>
+		</action>
+	</package>
+	
 	<package name="bookmanage" extends="struts-default" namespace="/">
 	
 		<interceptors>
@@ -19,8 +34,24 @@
 		
 		<global-results>
 			<result name="login" type="redirect">/index.jsp</result>
+			<result name="error">/welcome.jsp</result>
 		</global-results>
 		
+		<action name="*_user" class="userAction" method="{1}">
+			<result name="pupdatesuccess">/updateuser.jsp</result>
+			<result name="updatesuccess">/welcome.jsp</result>
+		</action>
+		
+		<action name="*_book" class="bookAction" method="{1}">
+			<result name="addsucess" type="redirect">list_book.action</result>
+			<result name="listsuccess">/listbook.jsp</result>
+			<result name="list4pagesuccess">/listbook4page.jsp</result>
+			<result name="pupdatesuccess">/updatebook.jsp</result>
+			<result name="updatesuccess" type="redirect">list_book.action</result>
+			<result name="deletesuccess" type="redirect">list_book.action</result>
+		</action>
+		
+		<!-- 
 		<action name="userLogin" class="userLoginAction">
 			<result name="success" type="redirect">/welcome.jsp</result>
 			<result name="input">/index.jsp</result>
@@ -43,7 +74,9 @@
 			<result name="success">/welcome.jsp</result>
 		</action>
 		
-		<!-- 书籍相关操作 -->
+		-->
+		
+		<!-- 书籍相关操作 
 		
 		<action name="addBook" class="addBookAction">
 			<result name="success" type="redirect">listBook.action</result>
@@ -68,7 +101,10 @@
 		<action name="deleteBook" class="deleteBookAction">
 			<result name="success" type="redirect">listBook.action</result>
 		</action>
+		-->
 		
 	</package>
+	
+	
 </struts>
     

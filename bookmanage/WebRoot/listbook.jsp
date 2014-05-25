@@ -44,8 +44,8 @@
 				<td><s:property value="#book.author"/></td>
 				<td align="right"><s:property value="#book.presstime"/></td>
 				<td align="center"><s:property value="#book.price"/></td>
-				<td align="center"><s:a href="updatePBook.action?book.bookid=%{#book.bookid}">修改</s:a></td>
-				<td align="center"><s:a href="deleteBook.action?book.bookid=%{#book.bookid}" onclick="return del()">删除</s:a></td>
+				<td align="center"><s:a href="pupdate_book.action?book.bookid=%{#book.bookid}">修改</s:a></td>
+				<td align="center"><s:a href="delete_book.action?book.bookid=%{#book.bookid}" onclick="return del()">删除</s:a></td>
 			</tr>
 		</s:iterator>
 		
@@ -53,7 +53,7 @@
 	
 	<table align="center">
 		<tr>
-			<td><s:a href="listBookForPage.action?page=1">分页查看</s:a></td>
+			<td><s:a href="list4page_book.action?page=1">分页查看</s:a></td>
 			<td colspan="7"><s:a href="addbook.jsp">添加图书</s:a></td>
 			<td colspan="7" align="right">
 			<s:a href="welcome.jsp">返回</s:a>
