@@ -10,11 +10,11 @@
 	<%
 		if(session.getAttribute("user") == null){
 			session.setAttribute("HasNotLoginMessage", "您尚未登录，请登录");
-			response.sendRedirect("/bookmanage/index.jsp");
+			response.sendRedirect("/bookmanage");
 		}
 	 %>
 	<%
-		response.setHeader("refresh", "1;URL=index.jsp");//定时跳转
+		response.setHeader("refresh", "1;URL=/bookmanage");//定时跳转
 		session.invalidate();//注销
 	 %>
 	 

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE validators PUBLIC
+  "-//Apache Struts//XWork Validator 1.0.3//EN"
+    "http://struts.apache.org/dtds/xwork-validator-1.0.3.dtd">  
+    
+<validators>
+	<field name="bookname">
+		<field-validator type="requiredstring">
+			<message>名称不能为空！</message>
+		</field-validator>
+		<field-validator type="stringlength">
+			<param name="minLength">1</param>
+			<param name="maxLength">20</param>
+			<message>名称必须在${minLength}~${maxLength}之间！</message>
+		</field-validator>
+		</field>
+		
+	<field name="author">
+		<field-validator type="stringlength">
+			<param name="minLength">1</param>
+			<param name="maxLength">10</param>
+			<message>作者必须在${minLength}~${maxLength}之间！</message>
+		</field-validator>
+	</field>
+	
+	<field name="price">
+		<field-validator type="double">
+			<param name="minExclusive">0</param>
+			<param name="maxExclusive">10000</param>
+			<message>价格要在${minExclusive}~${maxExclusive}之间！</message>
+		</field-validator>
+	</field>
+	
+	<field name="presstime">
+		<field-validator type="date">
+			<param name="min">1900-00-00</param>
+			<param name="max">2014-05-05</param>
+			<message>出版日期要在${min}~${max}之间！</message>
+		</field-validator>
+	</field>
+
+</validators>    

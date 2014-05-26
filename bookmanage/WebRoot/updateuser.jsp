@@ -11,7 +11,7 @@
 	<%
 		if(session.getAttribute("user") == null){
 			session.setAttribute("HasNotLoginMessage", "您尚未登录，请登录");
-			response.sendRedirect("/bookmanage/index.jsp");
+			response.sendRedirect("/bookmanage");
 		}
 	 %>
 	<center>
@@ -22,13 +22,14 @@
 	<s:form action="update_user">
 		<table>
 				<s:hidden name="user.userid" value="%{user.userid}" />
-				<s:hidden name="user.password" value="%{user.password}" />
+				<s:hidden name="user.password" value="%{user.password}"/>
 				<s:textfield name="user.username" value="%{user.username}"
 					label="%{getText('username')}" />
 				<s:textfield name="user.age" value="%{user.age}"
 					label="%{getText('age')}" />
-				<s:textfield name="user.gender" value="%{user.gender}"
-					label="%{getText('gender')}" />
+				<s:radio name="user.gender" value="%{user.gender}" list="%{#{'男':'男','女':'女','保密':'保密'}}" 
+					label="%{getText('gender')}"/>
+				
 				<tr>
                     <td colspan="2" align="center">
                     	<s:reset  value="%{getText('reset')}" theme="simple"/>

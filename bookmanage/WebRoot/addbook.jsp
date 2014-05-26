@@ -12,13 +12,13 @@
 	<%
 		if(session.getAttribute("user") == null){
 			session.setAttribute("HasNotLoginMessage", "您尚未登录，请登录");
-			response.sendRedirect("/bookmanage/index.jsp");
+			response.sendRedirect("/bookmanage");
 		}
 	 %>
 	<center>
 		<h1><font color="red">添加图书</font></h1>
 		<s:form action="add_book">
-			<table border="1">
+			<table>
 				<s:textfield name="book.bookname" label="%{getText('bookname')}"/>
 				<s:textfield name="book.author" label="%{getText('author')}"/>
 				<s:textfield name="book.price" label="%{getText('price')}"/> 

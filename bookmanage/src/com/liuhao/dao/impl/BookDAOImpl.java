@@ -29,7 +29,7 @@ public class BookDAOImpl extends HibernateDaoSupport implements BookDAO {
 	public List<Book> findAllBooks() {
 		String hql = "from Book book order by book.bookid";
 		
-		return (List<Book>)this.getHibernateTemplate().find(hql);
+		return this.getHibernateTemplate().find(hql);
 	}
 
 	@Override

@@ -22,7 +22,7 @@
 		<br>
 		<s:fielderror cssStyle="color:red" fieldName="NameOrPasswordError"></s:fielderror>
 		<s:form action="user_login" method="post">
-			<table border="1">
+			<table>
 				<s:textfield name="user.username" label="%{getText('username')}"></s:textfield>
 				<s:password name="user.password" label="%{getText('password')}"> </s:password>
 				<tr>

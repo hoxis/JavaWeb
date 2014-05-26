@@ -11,7 +11,7 @@
 	<%
 		if(session.getAttribute("user") == null){
 			session.setAttribute("HasNotLoginMessage", "您尚未登录，请登录");
-			response.sendRedirect("/bookmanage/index.jsp");
+			response.sendRedirect("/bookmanage");
 		}
 	 %>
 	
@@ -29,8 +29,9 @@
 					label="%{getText('author')}" />
 				<s:textfield name="book.price" value="%{book.price}"
 					label="%{getText('price')}" />
+					
 				<s:textfield name="book.presstime" value="%{book.presstime}"
-				label="%{getText('presstime')}" />
+					label="%{getText('presstime')}" />
 				<tr>
                     <td colspan="2" align="center">
                     	<s:reset  value="%{getText('reset')}" theme="simple"/>

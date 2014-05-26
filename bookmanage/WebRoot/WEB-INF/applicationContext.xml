@@ -50,23 +50,7 @@
 	<bean id="userAction" class="com.liuhao.action.user.UserAction" scope="prototype">
 		<property name="userService" ref="userService"/>
 	</bean>
-	<!-- 
-	<bean id="userLoginAction" class="com.liuhao.action.user.UserLoginAction" scope="prototype">
-		<property name="userService" ref="userService"/>
-	</bean>
 	
-	<bean id="userRegisterAction" class="com.liuhao.action.user.UserRegisterAction" scope="prototype">
-		<property name="userService" ref="userService"/>
-	</bean>
-	
-	<bean id="updatePUserAction" class="com.liuhao.action.user.UpdatePUserAction" scope="prototype">
-		<property name="userService" ref="userService"/>
-	</bean>
-	
-	<bean id="updateUserAction" class="com.liuhao.action.user.UpdateUserAction" scope="prototype">
-		<property name="userService" ref="userService"/>
-	</bean>
-	 -->
 	
 	<!-- 书籍相关逻辑 -->
 	<bean id="bookDao" class="com.liuhao.dao.impl.BookDAOImpl" scope="singleton">
@@ -110,6 +94,24 @@
 	
 	<bean id="listBookForPageAction" class="com.liuhao.action.book.ListBookForPageAction">
 		<property name="bookService" ref="bookService"/>
+	</bean>
+	 -->
+	 
+	 <!-- 
+	<bean id="userLoginAction" class="com.liuhao.action.user.UserLoginAction" scope="prototype">
+		<property name="userService" ref="userService"/>
+	</bean>
+	
+	<bean id="userRegisterAction" class="com.liuhao.action.user.UserRegisterAction" scope="prototype">
+		<property name="userService" ref="userService"/>
+	</bean>
+	
+	<bean id="updatePUserAction" class="com.liuhao.action.user.UpdatePUserAction" scope="prototype">
+		<property name="userService" ref="userService"/>
+	</bean>
+	
+	<bean id="updateUserAction" class="com.liuhao.action.user.UpdateUserAction" scope="prototype">
+		<property name="userService" ref="userService"/>
 	</bean>
 	 -->
 

@@ -20,7 +20,7 @@
 	<%
 		if(session.getAttribute("user") == null){
 			session.setAttribute("HasNotLoginMessage", "您尚未登录，请登录");
-			response.sendRedirect("/bookmanage/index.jsp");
+			response.sendRedirect("/bookmanage");
 		}
 	 %>
 
@@ -42,7 +42,9 @@
 				<td align="center"><s:property value="#book.bookid"/></td>
 				<td><s:property value="#book.bookname"/></td>
 				<td><s:property value="#book.author"/></td>
-				<td align="right"><s:property value="#book.presstime"/></td>
+				
+				<td><s:date name="#book.presstime" format="yyyy-MM-dd"/></td>
+				
 				<td align="center"><s:property value="#book.price"/></td>
 				<td align="center"><s:a href="pupdate_book.action?book.bookid=%{#book.bookid}">修改</s:a></td>
 				<td align="center"><s:a href="delete_book.action?book.bookid=%{#book.bookid}" onclick="return del()">删除</s:a></td>

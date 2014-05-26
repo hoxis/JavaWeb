@@ -1,7 +1,5 @@
 package com.liuhao.action.user;
 
-import org.apache.struts2.ServletActionContext;
-
 import com.liuhao.bean.User;
 import com.liuhao.service.UserService;
 import com.opensymphony.xwork2.ActionContext;
@@ -43,14 +41,12 @@ public class UserAction extends ActionSupport {
 	public String register() throws Exception {
 		userService.saveUser(user);
 		ActionContext.getContext().getSession().put("user", user);
-		// ActionContext.getContext().getSession().put("username",
-		// user.getUsername());
-		// ActionContext.getContext().getSession().put("userid",user.getUserid());
 		return "registersuccess";
 	}
 
 	public String pupdate() throws Exception {
 		user = userService.findUserById(user.getUserid());
+		System.out.println(user.getGender());
 		if (user != null) {
 			return "pupdatesuccess";
 		} else {
@@ -61,10 +57,7 @@ public class UserAction extends ActionSupport {
 
 	public String update() throws Exception {
 		userService.updateUser(user);
-		ServletActionContext.getRequest().getSession()
-				.setAttribute("username", user.getUsername());
-		ServletActionContext.getRequest().getSession()
-				.setAttribute("userid", user.getUserid());
+		ActionContext.getContext().getSession().put("user", user);
 		return "updatesuccess";
 	}
 

@@ -4,17 +4,16 @@
     "http://struts.apache.org/dtds/struts-2.1.7.dtd">
     
 <struts>
-
 	<package name="user" extends="struts-default" namespace="/">
 	
 		<global-results>
-			<result name="login" type="redirect">/index.jsp</result>
-			<result name="error">/index.jsp</result>
+			<result name="login" type="redirect">/login.jsp</result>
+			<result name="error">/login.jsp</result>
 		</global-results>
 		
 		<action name="user_*" class="userAction" method="{1}">
 			<result name="loginsuccess" type="redirect">/welcome.jsp</result>
-			<result name="input">/index.jsp</result>
+			<result name="input">/{1}.jsp</result>
 			<result name="registersuccess" type="redirect">welcome.jsp</result>
 		</action>
 	</package>
@@ -33,13 +32,14 @@
 		<default-interceptor-ref name="mydefault"></default-interceptor-ref>
 		
 		<global-results>
-			<result name="login" type="redirect">/index.jsp</result>
+			<result name="login" type="redirect">/login.jsp</result>
 			<result name="error">/welcome.jsp</result>
 		</global-results>
 		
 		<action name="*_user" class="userAction" method="{1}">
 			<result name="pupdatesuccess">/updateuser.jsp</result>
 			<result name="updatesuccess">/welcome.jsp</result>
+			<result name="input">/updateuser.jsp</result>
 		</action>
 		
 		<action name="*_book" class="bookAction" method="{1}">
@@ -49,13 +49,14 @@
 			<result name="pupdatesuccess">/updatebook.jsp</result>
 			<result name="updatesuccess" type="redirect">list_book.action</result>
 			<result name="deletesuccess" type="redirect">list_book.action</result>
+			<result name="input">/{1}book.jsp</result>
 		</action>
 		
 		<!-- 
 		<action name="userLogin" class="userLoginAction">
 			<result name="success" type="redirect">/welcome.jsp</result>
-			<result name="input">/index.jsp</result>
-			<result name="error">/index.jsp</result>
+			<result name="input">/login.jsp</result>
+			<result name="error">/login.jsp</result>
 			<interceptor-ref name="defaultStack"></interceptor-ref>
 		</action>
 		
@@ -104,7 +105,6 @@
 		-->
 		
 	</package>
-	
 	
 </struts>
     

@@ -10,12 +10,15 @@
 <body>
 	<center>
 		<h1><font color="red"><s:text name="system"></s:text></font></h1>
+		<!-- <s:fielderror cssStyle="color:red" ></s:fielderror> -->
 		<s:form action="user_register">
-			<table border="1">
+			<table>
 				<s:textfield name="user.username" label="%{getText('username')}"/>
 				<s:password name="user.password" label="%{getText('password')}"> </s:password>
 				<s:textfield name="user.age" label="%{getText('age')}"/> 
-				<s:textfield name="user.gender" label="%{getText('gender')}"/>
+				
+			<!-- 	<s:textfield name="user.gender" label="%{getText('gender')}"/> -->
+				<s:radio name="user.gender" list="%{#{'男':'男','女':'女','保密':'保密'}}" value="'男'" label="%{getText('gender')}"/>
 				
 				<tr>
                     <td colspan="2" align="center">
@@ -30,7 +33,7 @@
 		<table align="center">
 		<tr>
 			<td colspan="7" align="right">
-			<s:a href="welcome.jsp">返回</s:a>
+			<s:a href="login.jsp">返回</s:a>
 		</td>
 		</tr>	
 	</table>
