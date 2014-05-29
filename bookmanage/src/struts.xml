@@ -2,46 +2,56 @@
 <!DOCTYPE struts PUBLIC
     "-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN"
     "http://struts.apache.org/dtds/struts-2.1.7.dtd">
-    
+
 <struts>
 	<package name="user" extends="struts-default" namespace="/">
-	
+
 		<global-results>
 			<result name="login" type="redirect">/login.jsp</result>
 			<result name="error">/login.jsp</result>
 		</global-results>
-		
+
 		<action name="user_*" class="userAction" method="{1}">
 			<result name="loginsuccess" type="redirect">/welcome.jsp</result>
 			<result name="input">/{1}.jsp</result>
 			<result name="registersuccess" type="redirect">welcome.jsp</result>
 		</action>
+
+		<!-- Random验证码 -->
+
+		<action name="rand" class="com.liuhao.action.RandomAction">
+			<result type="stream">
+				<param name="contentType">image/jpeg</param>
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>
 	</package>
-	
+
 	<package name="bookmanage" extends="struts-default" namespace="/">
-	
+
 		<interceptors>
 			<!-- 用户登录状态拦截器，若为登录则不能直接访问action，直接跳转到登录页面 -->
-			<interceptor name="antuority" class="com.liuhao.interceptor.LoginInterceptor"/>
+			<interceptor name="antuority"
+				class="com.liuhao.interceptor.LoginInterceptor" />
 			<interceptor-stack name="mydefault">
-				<interceptor-ref name="defaultStack"/>
-				<interceptor-ref name="antuority"/>
+				<interceptor-ref name="defaultStack" />
+				<interceptor-ref name="antuority" />
 			</interceptor-stack>
 		</interceptors>
-		
+
 		<default-interceptor-ref name="mydefault"></default-interceptor-ref>
-		
+
 		<global-results>
 			<result name="login" type="redirect">/login.jsp</result>
 			<result name="error">/welcome.jsp</result>
 		</global-results>
-		
+
 		<action name="*_user" class="userAction" method="{1}">
 			<result name="pupdatesuccess">/updateuser.jsp</result>
 			<result name="updatesuccess">/welcome.jsp</result>
 			<result name="input">/updateuser.jsp</result>
 		</action>
-		
+
 		<action name="*_book" class="bookAction" method="{1}">
 			<result name="addsucess" type="redirect">list_book.action</result>
 			<result name="listsuccess">/listbook.jsp</result>
@@ -51,60 +61,28 @@
 			<result name="deletesuccess" type="redirect">list_book.action</result>
 			<result name="input">/{1}book.jsp</result>
 		</action>
-		
-		<!-- 
-		<action name="userLogin" class="userLoginAction">
-			<result name="success" type="redirect">/welcome.jsp</result>
-			<result name="input">/login.jsp</result>
-			<result name="error">/login.jsp</result>
-			<interceptor-ref name="defaultStack"></interceptor-ref>
-		</action>
-		
-		<action name="userRegister" class="userRegisterAction">
-			<result name="success" type="redirect">welcome.jsp</result>
-			<result name="input">/register.jsp</result>
-			<interceptor-ref name="defaultStack"></interceptor-ref>
-		</action>
-		
-		<action name="updatePUser" class="updatePUserAction">
-			<result name="success">/updateuser.jsp</result>
-			<result name="error">/welcome.jsp</result>
-		</action>
-		
-		<action name="updateUser" class="updateUserAction">
-			<result name="success">/welcome.jsp</result>
-		</action>
-		
-		-->
-		
-		<!-- 书籍相关操作 
-		
-		<action name="addBook" class="addBookAction">
-			<result name="success" type="redirect">listBook.action</result>
-		</action>
-		<action name="listBook" class="listBookAction">
-			<result name="success">/listbook.jsp</result>
-		</action>
-		
-		<action name="listBookForPage" class="listBookForPageAction">
-			<result name="success">/listbook4page.jsp</result>
-		</action>
-		
-		<action name="updatePBook" class="updatePBookAction">
-			<result name="success">/updatebook.jsp</result>
-			<result name="error">/welcome.jsp</result>
-		</action>
-		
-		<action name="updateBook" class="updateBookAction">
-			<result name="success" type="redirect">listBook.action</result>
-		</action>
-		
-		<action name="deleteBook" class="deleteBookAction">
-			<result name="success" type="redirect">listBook.action</result>
-		</action>
-		-->
-		
+
+		<!-- <action name="userLogin" class="userLoginAction"> <result name="success" 
+			type="redirect">/welcome.jsp</result> <result name="input">/login.jsp</result> 
+			<result name="error">/login.jsp</result> <interceptor-ref name="defaultStack"></interceptor-ref> 
+			</action> <action name="userRegister" class="userRegisterAction"> <result 
+			name="success" type="redirect">welcome.jsp</result> <result name="input">/register.jsp</result> 
+			<interceptor-ref name="defaultStack"></interceptor-ref> </action> <action 
+			name="updatePUser" class="updatePUserAction"> <result name="success">/updateuser.jsp</result> 
+			<result name="error">/welcome.jsp</result> </action> <action name="updateUser" 
+			class="updateUserAction"> <result name="success">/welcome.jsp</result> </action> -->
+
+		<!-- 书籍相关操作 <action name="addBook" class="addBookAction"> <result name="success" 
+			type="redirect">listBook.action</result> </action> <action name="listBook" 
+			class="listBookAction"> <result name="success">/listbook.jsp</result> </action> 
+			<action name="listBookForPage" class="listBookForPageAction"> <result name="success">/listbook4page.jsp</result> 
+			</action> <action name="updatePBook" class="updatePBookAction"> <result name="success">/updatebook.jsp</result> 
+			<result name="error">/welcome.jsp</result> </action> <action name="updateBook" 
+			class="updateBookAction"> <result name="success" type="redirect">listBook.action</result> 
+			</action> <action name="deleteBook" class="deleteBookAction"> <result name="success" 
+			type="redirect">listBook.action</result> </action> -->
+
 	</package>
-	
+
 </struts>
     

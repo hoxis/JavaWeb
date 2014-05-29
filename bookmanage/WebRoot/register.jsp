@@ -11,7 +11,7 @@
 	<center>
 		<h1><font color="red"><s:text name="system"></s:text></font></h1>
 		<!-- <s:fielderror cssStyle="color:red" ></s:fielderror> -->
-		<s:form action="user_register">
+		<s:form action="user_register.action">
 			<table>
 				<s:textfield name="user.username" label="%{getText('username')}"/>
 				<s:password name="user.password" label="%{getText('password')}"> </s:password>

@@ -20,7 +20,7 @@
 			<font color="red">更新图书</font>
 		</h1>
 
-	<s:form action="update_book">
+	<s:form action="update_book.action">
 		<table>
 				<s:hidden name="book.bookid" value="%{book.bookid}" />
 				<s:textfield name="book.bookname" value="%{book.bookname}"

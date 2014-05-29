@@ -10,6 +10,16 @@ public class UserAction extends ActionSupport {
 	private UserService userService;
 
 	private User user;
+	
+	private String rand;//用户输入界面的输入的验证码
+
+	public String getRand() {
+		return rand;
+	}
+
+	public void setRand(String rand) {
+		this.rand = rand;
+	}
 
 	public UserService getUserService() {
 		return userService;
@@ -29,12 +39,17 @@ public class UserAction extends ActionSupport {
 
 	public String login() throws Exception {
 		user = userService.findUser(user);
-		if (user != null) {
-			ActionContext.getContext().getSession().put("user", user);
-			return "loginsuccess";
-		} else {
+		String arandom = (String) ActionContext.getContext().getSession().get("random");
+
+		if(user == null){
 			this.addFieldError("NameOrPasswordError", "用户名或密码错误，请重新输入！！！");
 			return ERROR;
+		}else if(!arandom.equals(this.getRand())){
+			this.addFieldError("ValidateCodeError", "验证码输入有误，请重新输入！");
+			return ERROR;
+		}else{
+			ActionContext.getContext().getSession().put("user",user);
+			return "loginsuccess";
 		}
 	}
 

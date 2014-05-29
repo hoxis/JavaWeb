@@ -5,14 +5,8 @@
 	http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
 	<display-name></display-name>
 
-<!-- 
-	<context-param>
-		<param-name>contextConfigLocation</param-name>
-		<param-value>
-            classpath:/applicationContext*.xml
-        </param-value>
-	</context-param>
- -->
+	<!-- <context-param> <param-name>contextConfigLocation</param-name> <param-value> 
+		classpath:/applicationContext*.xml </param-value> </context-param> -->
 	<filter>
 		<filter-name>struts2</filter-name>
 		<filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
@@ -20,7 +14,11 @@
 
 	<filter-mapping>
 		<filter-name>struts2</filter-name>
-		<url-pattern>/*</url-pattern>
+		<url-pattern>*.action</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>struts2</filter-name>
+		<url-pattern>*.jsp</url-pattern>
 	</filter-mapping>
 
 
@@ -33,31 +31,11 @@
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
 
-	<!-- 加入dwr的支持
-	<servlet>
-		<servlet-name>dwr</servlet-name>
-		<servlet-class>uk.ltd.getahead.dwr.DWRServlet</servlet-class>
-		<init-param>
-			<param-name>debug</param-name>
-			<param-value>true</param-value>
-		</init-param>
-	</servlet>
-
-	<servlet-mapping>
-		<servlet-name>dwr</servlet-name>
-		<url-pattern>/dwr/*</url-pattern>
-	</servlet-mapping>
-	
-	 
-	 <servlet>
-	 	<servlet-name>welcome</servlet-name>
-	 	<jsp-file>/WEB-INF/welcome.jsp</jsp-file>
-	 </servlet>
-	 <servlet-mapping>
-	 	<servlet-name>welcome</servlet-name>
-	 	<url-pattern>/welcome.jsp</url-pattern>
-	 </servlet-mapping>
-	 
-	  -->
+	<!-- 加入dwr的支持 <servlet> <servlet-name>dwr</servlet-name> <servlet-class>uk.ltd.getahead.dwr.DWRServlet</servlet-class> 
+		<init-param> <param-name>debug</param-name> <param-value>true</param-value> 
+		</init-param> </servlet> <servlet-mapping> <servlet-name>dwr</servlet-name> 
+		<url-pattern>/dwr/*</url-pattern> </servlet-mapping> <servlet> <servlet-name>welcome</servlet-name> 
+		<jsp-file>/WEB-INF/welcome.jsp</jsp-file> </servlet> <servlet-mapping> <servlet-name>welcome</servlet-name> 
+		<url-pattern>/welcome.jsp</url-pattern> </servlet-mapping> -->
 
 </web-app>

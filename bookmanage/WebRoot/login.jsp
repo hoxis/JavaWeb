@@ -7,6 +7,19 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title><s:text name="login"></s:text></title>
+<script type="text/javascript">   
+	function changeValidateCode(obj)
+	
+	<!------------- this用object接收-------------->
+	
+	{   
+	//获取当前的时间作为参数，无具体意义   
+	var timenow = new Date().getTime();
+	//每次请求需要一个不同的参数，否则可能会返回同样的验证码   
+	//这和浏览器的缓存机制有关系，也可以把页面设置为不缓存，这样就不用这个参数了。   
+	obj.src="rand.action?d="+timenow;   
+	}   
+</script>    
 </head>
 <body>
 	<center>
@@ -20,11 +33,17 @@
 		
 		<font color="red"><s:property value="#session.HasNotLoginMessage"/></font>
 		<br>
-		<s:fielderror cssStyle="color:red" fieldName="NameOrPasswordError"></s:fielderror>
-		<s:form action="user_login" method="post">
+		<s:fielderror cssStyle="color:red"></s:fielderror>
+		<s:form action="user_login.action" method="post">
 			<table>
 				<s:textfield name="user.username" label="%{getText('username')}"></s:textfield>
 				<s:password name="user.password" label="%{getText('password')}"> </s:password>
+			</table>	
+				
+				<s:textfield name="rand" size="5" label="验证码"></s:textfield>
+				<!----------src用action赋值---------->
+				<img src="rand.action"   onclick="changeValidateCode(this)" title="点击图片刷新验证码"/>  
+			<table>
 				<tr>
                     <td colspan="2" align="center">
                     	<s:reset  value="%{getText('reset')}" theme="simple"/>
@@ -32,6 +51,7 @@
                     </td>
 				</tr>
 			</table>
+			
 		</s:form>
 		
 		<br>

@@ -19,7 +19,7 @@
 			<font color="red">更新用户</font>
 		</h1>
 
-	<s:form action="update_user">
+	<s:form action="update_user.action">
 		<table>
 				<s:hidden name="user.userid" value="%{user.userid}" />
 				<s:hidden name="user.password" value="%{user.password}"/>
