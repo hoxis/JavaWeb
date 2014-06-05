@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>欢迎</title>
 </head>
 <body>
 	<a href="${pageContext.request.contextPath }/AccessCountFilter">访问次数统计</a>

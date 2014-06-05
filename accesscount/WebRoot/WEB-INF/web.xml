@@ -9,10 +9,12 @@
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
   
+  <!-- 
   <session-config>
   	<session-timeout>3</session-timeout>
   </session-config>
-  
+   -->
+   
   <filter>
   	<filter-name>AccessCountFilter</filter-name>
   	<filter-class>com.liuhao.servlet.AccessCountFilter</filter-class>

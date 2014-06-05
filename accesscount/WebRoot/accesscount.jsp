@@ -21,5 +21,6 @@
 	</c:forEach>
 </table>
 <h3>在线人数：${applicationScope.sum }</h3>
+<a href="${pageContext.request.contextPath }/index.jsp">返回</a>
 </body>
 </html>

@@ -24,7 +24,7 @@ System.out.println("-----新用户:" + se.getSession().getId());
 	public void sessionDestroyed(HttpSessionEvent se) {
 System.out.println("------用户注销:" + se.getSession().getId());		
 		//sum = (Integer) app.getAttribute("sum");
-		if(sum > 0){
+		if(sum > 1){
 			sum--;
 		}
 		app.setAttribute("sum", sum);
