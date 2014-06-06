@@ -31,11 +31,20 @@
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
 
-	<!-- 加入dwr的支持 <servlet> <servlet-name>dwr</servlet-name> <servlet-class>uk.ltd.getahead.dwr.DWRServlet</servlet-class> 
-		<init-param> <param-name>debug</param-name> <param-value>true</param-value> 
-		</init-param> </servlet> <servlet-mapping> <servlet-name>dwr</servlet-name> 
-		<url-pattern>/dwr/*</url-pattern> </servlet-mapping> <servlet> <servlet-name>welcome</servlet-name> 
-		<jsp-file>/WEB-INF/welcome.jsp</jsp-file> </servlet> <servlet-mapping> <servlet-name>welcome</servlet-name> 
-		<url-pattern>/welcome.jsp</url-pattern> </servlet-mapping> -->
+	<!-- 加入dwr的支持
+	<servlet>
+		<servlet-name>dwr-invoker</servlet-name>
+		<servlet-class>org.directwebremoting.servlet.DwrServlet</servlet-class>
+		<init-param>
+			<param-name>debug</param-name>
+			<param-value>true</param-value>
+		</init-param>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>dwr-invoker</servlet-name>
+		<url-pattern>/dwr/*</url-pattern>
+	</servlet-mapping>
+	-->
 
 </web-app>

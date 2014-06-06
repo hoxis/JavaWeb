@@ -32,12 +32,35 @@ public class PaginationDAOImpl<E> extends HibernateDaoSupport implements Paginat
 		session.close();
 		
 		return list;
-		
 	}
 
+	/* (non-Javadoc)
+	 * @see com.liuhao.dao.PaginationDAO#getAllRowCount(java.lang.String)
+	 * 通过统计查询的方式查出满足条件的记录总数
+	 */
 	@Override
 	public int getAllRowCount(String hql) {
-		return this.getHibernateTemplate().find(hql).size();
+		
+		int fromIndex = hql.toLowerCase().indexOf("from");
+		
+		String countHql = hql.substring(fromIndex);
+		
+		int orderByIndex = countHql.toLowerCase().indexOf("order by");
+		if (orderByIndex != -1) {
+			countHql = countHql.substring(0, orderByIndex);
+		}
+		
+		//拼接成统计查询语句
+		countHql = "select count(*) " + countHql;
+		
+		Number num =  (Number)this.getSession().createQuery(countHql).uniqueResult();
+		
+		if(num != null){
+			return num.intValue();
+		}else{
+			return 0;
+		}
+//		return this.getHibernateTemplate().find(hql).size();
 	}
 
 }

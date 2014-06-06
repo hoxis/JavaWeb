@@ -61,7 +61,6 @@ public class UserAction extends ActionSupport {
 
 	public String pupdate() throws Exception {
 		user = userService.findUserById(user.getUserid());
-		System.out.println(user.getGender());
 		if (user != null) {
 			return "pupdatesuccess";
 		} else {
