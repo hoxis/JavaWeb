@@ -17,6 +17,13 @@ JavaWeb
 		还有一个session的监听器，可以记录在线人数。
 		
 		
-##mytest 
+## mytest 
 目录下：
 		一个用SSH实现的简单的用户增、删、改、查 系统，通过此系统可以了解SSH整合的步骤和一般流程。		
+
+## test
+
+MyBatis+Spring+Maven的简单整合Demo
+
+## activemq
+基于maven的Spring+ActiveMQ整合Demo
