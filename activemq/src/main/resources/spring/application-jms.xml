@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amq="http://activemq.apache.org/schema/core"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://activemq.apache.org/schema/core http://activemq.apache.org/schema/core/activemq-core-5.8.0.xsd">
+
+	<!-- Activemq 连接工厂 -->
+	<bean id="activeMQConnectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
+		<constructor-arg value="system1" />
+		<constructor-arg value="manager1" />
+		<constructor-arg value="failover:(tcp://localhost:61616)?timeout=2000" />
+	</bean>
+
+	<!-- ConnectionFactory Definition -->
+	<bean id="connectionFactory"
+		class="org.springframework.jms.connection.CachingConnectionFactory">
+		<constructor-arg ref="activeMQConnectionFactory" />
+	</bean>
+
+	<!-- Default Destination Queue Definition -->
+	<!-- 测试配置多个Destination -->
+	<bean id="destination" class="org.apache.activemq.command.ActiveMQQueue">
+		<constructor-arg index="0" value="test.activemq.queue" />
+	</bean>
+
+	<!-- JmsTemplate Definition -->
+	<bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">
+		<property name="connectionFactory" ref="connectionFactory" />
+		<property name="defaultDestination" ref="destination" />
+	</bean>
+
+	<!-- Message Sender Definition -->
+	<bean id="messageSender" class="activemq.publisher.MessageSender">
+		<constructor-arg index="0" ref="jmsTemplate" />
+		<constructor-arg index="1" ref="destination" />
+	</bean>
+
+	<!-- 消息监听器 Message Receiver Definition -->
+	<bean id="messageReceiver" class="activemq.consumer.MessageReceiver">
+	</bean>
+	<bean class="org.springframework.jms.listener.SimpleMessageListenerContainer">
+		<property name="connectionFactory" ref="connectionFactory" />
+		<property name="destinationName" value="test.activemq.queue" />
+		<property name="messageListener" ref="messageReceiver" />
+	</bean>
+
+</beans>
