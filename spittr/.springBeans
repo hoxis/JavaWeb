@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beansProjectDescription>
 	<version>1</version>
-	<pluginVersion><![CDATA[3.2.0.201303060654-RELEASE]]></pluginVersion>
+	<pluginVersion><![CDATA[3.7.0.201506251244-RELEASE]]></pluginVersion>
 	<configSuffixes>
 		<configSuffix><![CDATA[xml]]></configSuffix>
 	</configSuffixes>
@@ -9,6 +9,8 @@
 	<configs>
 		<config>src/main/resources/spring/application-config.xml</config>
 	</configs>
+	<autoconfigs>
+	</autoconfigs>
 	<configSets>
 	</configSets>
 </beansProjectDescription>
