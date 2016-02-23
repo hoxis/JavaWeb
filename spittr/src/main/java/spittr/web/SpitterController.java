@@ -30,7 +30,8 @@ public class SpitterController {
 
 	// 处理来自/spitter/register的get请求
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
-	public String showRegistrationForm() {
+	public String showRegistrationForm(Model model) {
+		model.addAttribute(new Spitter());
 		return "registerForm";
 	}
 
