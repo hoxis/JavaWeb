@@ -12,6 +12,10 @@ public interface SpittleRepository {
 	 * @return
 	 */
 	List<Spittle> findSpittles(long max, int count);
-	
+
+	List<Spittle> findRecentSpittles();
+
 	Spittle findOne(long spittleId);
+
+	void save(Spittle spittle);
 }
